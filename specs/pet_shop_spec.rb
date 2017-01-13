@@ -203,5 +203,17 @@ class TestPetShop < Minitest::Test
     assert_equal(0, pets_sold(@pet_shop))
     assert_equal(1000, total_cash(@pet_shop))
   end
-
+# customers may wish to buy more than one pet(an array of pets)
+  def test_sell_multiple_pets_to_customer
+    customer = {
+      name: "Colin",
+      pets: [],
+      cash: 1500
+    }
+    pets_array = []
+    pets_array.push(find_pet_by_name(@pet_shop,"Arthur"))
+    pets_array.push(find_pet_by_name(@pet_shop,"Dave"))
+    pets_array.push(find_pet_by_name(@pet_shop,"Sir Percy"))
+    sell_pet_to_customer(@pet_shop, pets_array, customer)
+  end
 end
