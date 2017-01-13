@@ -66,9 +66,11 @@ def customer_can_afford_pet(customer_hash, new_pet_hash)
 end
 
 def sell_pet_to_customer(pet_shop_hash, new_pet_hash, customer_hash)
-	if(new_pet_hash != nil)
-		add_pet_to_customer(customer_hash, new_pet_hash)
-		increase_pets_sold(pet_shop_hash, 1)
-		add_or_remove_cash(pet_shop_hash, new_pet_hash[:price])
+		if(new_pet_hash != nil)
+			if customer_can_afford_pet(customer_hash, new_pet_hash)
+			add_pet_to_customer(customer_hash, new_pet_hash)
+			increase_pets_sold(pet_shop_hash, 1)
+			add_or_remove_cash(pet_shop_hash, new_pet_hash[:price])
+		end
 	end
 end
