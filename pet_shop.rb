@@ -64,3 +64,9 @@ end
 def customer_can_afford_pet(customer_hash, new_pet_hash)
 	return customer_hash[:cash] - new_pet_hash[:price] >= 0
 end
+
+def sell_pet_to_customer(pet_shop_hash, new_pet_hash, customer_hash)
+	add_pet_to_customer(customer_hash, new_pet_hash)
+	increase_pets_sold(pet_shop_hash, 1)
+	add_or_remove_cash(pet_shop_hash, new_pet_hash[:price])
+end
